@@ -58,7 +58,8 @@ namespace net.encausse.sarah {
         // -------------------------------------------
 
         protected void Log(string msg) {
-            System.Diagnostics.Debug.WriteLine(msg);
+            Console.WriteLine(msg);
+            //System.Diagnostics.Debug.WriteLine(msg);
         }
 
         // -------------------------------------------

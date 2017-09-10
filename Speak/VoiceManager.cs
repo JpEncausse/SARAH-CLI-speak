@@ -33,7 +33,8 @@ namespace net.encausse.sarah {
         // ------------------------------------------
 
         protected void Log(string msg) {
-            System.Diagnostics.Debug.WriteLine(msg);
+            Console.WriteLine(msg);
+            // System.Diagnostics.Debug.WriteLine(msg);
         }
 
         // -------------------------------------------
@@ -64,6 +65,7 @@ namespace net.encausse.sarah {
 
 
         public void Speak(String tts, Action<MemoryStream> callback) {
+            if (String.IsNullOrEmpty(tts)) { Log("No TTS"); return;  }
             Log("Speaking: " + tts);
             try {
                 PromptBuilder builder = new PromptBuilder();

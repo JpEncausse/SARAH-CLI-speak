@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Globalization;
 using Mono.Options;
 
 namespace net.encausse.sarah {
     class Program {
 
         static void Main(string[] args) {
+
+            CultureInfo culture = CultureInfo.CreateSpecificCulture("en-US");
 
             bool help = false;
             string tts = null;
@@ -17,8 +20,8 @@ namespace net.encausse.sarah {
 
             var p = new OptionSet() {
                 { "tts=", "the text to speech", v => tts = v },
-                { "speaker=", "the speaker id (default to -1)", v => int.TryParse(v, out deviceId) },
-                { "volume=", "the speaker volume (default to 100)", v => float.TryParse(v, out speakerVol) },
+                { "speaker=", "the speaker id (default to -1)", v => deviceId = int.Parse(v, culture) },
+                { "volume=", "the speaker volume (default to 100)", v => speakerVol = float.Parse(v, culture) },
                 { "voice=", "the voice id", v => voice = v },
                 { "l|language=", "the voice language (default to fr-FR)", v => language = v },
                 { "h|help",  "show this message and exit", v => help = v != null },
